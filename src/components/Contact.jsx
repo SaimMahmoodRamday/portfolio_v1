@@ -18,11 +18,28 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSending(true)
-    await new Promise((resolve) => setTimeout(resolve, 1200))
-    setSending(false)
-    setSent(true)
-    setFormState({ name: '', email: '', message: '' })
-    setTimeout(() => setSent(false), 4000)
+    try {
+      const res = await fetch('https://formspree.io/f/xyklqryj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message
+        })
+      })
+      if (!res.ok) throw new Error(`Formspree responded with ${res.status}`)
+      setSent(true)
+      setFormState({ name: '', email: '', message: '' })
+      setTimeout(() => setSent(false), 4000)
+    } catch (err) {
+      console.error('Contact form submission failed:', err)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -142,6 +159,7 @@ export default function Contact() {
                 </label>
                 <input
                   id="contact-name"
+                  name="name"
                   type="text"
                   required
                   value={formState.name}
@@ -157,6 +175,7 @@ export default function Contact() {
                 </label>
                 <input
                   id="contact-email"
+                  name="email"
                   type="email"
                   required
                   value={formState.email}
@@ -172,6 +191,7 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="contact-message"
+                  name="message"
                   required
                   rows="5"
                   value={formState.message}
