@@ -5,11 +5,12 @@ import useCounter from '../hooks/useCounter'
 const EASE = [0.16, 1, 0.3, 1]
 
 const PARAGRAPHS = [
-  "I'm a Computer Scientist working at the intersection of artificial intelligence, distributed systems, and full-stack engineering. My work centers on building end-to-end systems — where models are not just trained, but deployed, scaled, and integrated into real-world workflows.",
-  'I design architectures that connect data pipelines, backend services, and user-facing interfaces into cohesive, production-ready platforms. This includes GPU-accelerated ML pipelines, streaming systems, and containerized deployments that prioritize performance, reliability, and maintainability.',
-  "My focus lies in applied AI: intelligent video analytics, large-scale search systems, predictive data pipelines, and NLP-driven applications. I'm particularly interested in systems where machine learning operates under real constraints — latency, scale, noisy data, and continuous adaptation.",
-  "Beyond the technical layer, I care about building systems that are usable, efficient, and impactful — tools that don't just demonstrate capability, but solve problems in a way that holds up in production."
-]
+  "I'm a Computer Scientist working at the intersection of artificial intelligence, distributed systems, and full-stack engineering, focused on building end-to-end systems where models are trained, deployed, scaled, and integrated into real-world workflows.",
+  "I design architectures that connect data pipelines, backend services, and user-facing interfaces into cohesive, production-ready platforms, including GPU-accelerated ML pipelines, streaming systems, and containerized deployments optimized for performance, reliability, and maintainability.",
+  "My focus lies in applied AI, including intelligent video analytics, large-scale search systems, predictive data pipelines, and NLP-driven applications, with experience in real-time multi-modal systems involving detection models, streaming architectures, and interactive dashboards under production constraints.",
+  "I am particularly interested in machine learning systems operating under real-world limitations such as latency, scale, noisy data, and continuous adaptation, including evaluation and fine-tuning of detection and density-based models for complex visual environments.",
+  "Beyond the technical layer, I aim to build systems that are usable, efficient, and impactful — combining AI and software engineering to improve decision-making, enhance accessibility, and solve real-world problems through practical, scalable technology solutions."
+];
 
 const STATS = [
   { value: 3, suffix: '+', label: 'Internships & Work Experiences' },

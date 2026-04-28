@@ -182,7 +182,7 @@ export default function Projects() {
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Chapter II.</span>
           <span className="h-px flex-1 bg-rule" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Case Studies</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Projects</span>
         </motion.div>
 
         <motion.h2
