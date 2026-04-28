@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0a0f1e;
+  --color-surface: #0d1424;
+  --color-cyan: #00d4ff;
+  --color-ivory: #f0ece4;
+  --color-text: #e8edf5;
+  --color-muted: #6b7fa3;
+  --color-border: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (pointer: fine) {
+  html, body {
+    cursor: none;
+  }
+  a, button, input, textarea, [role="button"] {
+    cursor: none;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Selection */
+::selection {
+  background: rgba(240, 236, 228, 0.2);
+  color: #e8edf5;
+}
+
+/* Section divider — clean single rule */
+.editorial-rule {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmer placeholder */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #0d1424 0%,
+    #1a2340 50%,
+    #0d1424 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Blinking cursor for typewriter */
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: rgba(255, 255, 255, 0.7);
+  margin-left: 4px;
+  vertical-align: -2px;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Section container — generous editorial spacing */
+.section-shell {
+  position: relative;
+  padding: 8rem 1.25rem;
+}
+@media (min-width: 768px) {
+  .section-shell { padding: 10rem 2rem; }
+}
+
+.container-xl {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Editorial card — flat, sharp, no blur */
+.editorial-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.editorial-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hero name glow — the ONE place we allow glow */
+.hero-name-glow {
+  text-shadow: 0 0 80px rgba(0, 212, 255, 0.15), 0 0 160px rgba(0, 212, 255, 0.06);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Slow spin for photo ring — subtle */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.ring-spin { animation: slow-spin 12s linear infinite; }

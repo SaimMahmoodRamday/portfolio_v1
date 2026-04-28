@@ -1,0 +1,52 @@
+import { AnimatePresence, motion } from 'framer-motion'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Projects from './components/Projects'
+import Experience from './components/Experience'
+import Skills from './components/Skills'
+import Volunteering from './components/Volunteering'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import CustomCursor from './components/CustomCursor'
+
+function SectionDivider() {
+  return (
+    <div className="container-xl px-5 md:px-8">
+      <div className="editorial-rule" />
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="app"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="min-h-screen bg-bg text-text-primary font-sans antialiased"
+      >
+        <CustomCursor />
+        <Navbar />
+        <main>
+          <Hero />
+          <SectionDivider />
+          <About />
+          <SectionDivider />
+          <Projects />
+          <SectionDivider />
+          <Experience />
+          <SectionDivider />
+          <Skills />
+          <SectionDivider />
+          <Volunteering />
+          <SectionDivider />
+          <Contact />
+        </main>
+        <Footer />
+      </motion.div>
+    </AnimatePresence>
+  )
+}
