@@ -95,7 +95,7 @@ export default function About() {
               Origin
             </div>
             <p className="text-ink-2 text-sm leading-relaxed">
-              Islamabad, Pakistan
+              Pakistan
             </p>
           </aside>
 
