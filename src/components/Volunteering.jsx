@@ -12,90 +12,87 @@ const BULLETS = [
 
 export default function Volunteering() {
   return (
-    <section id="volunteering" className="section-shell bg-surface">
+    <section id="volunteering" className="section-shell bg-paper-2">
       <div className="container-xl">
-        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="font-syne text-xs uppercase tracking-[0.3em] text-text-muted mb-8"
-        >
-          COMMUNITY
-        </motion.div>
-
-        {/* Heading — editorial mixed typography */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="text-3xl md:text-5xl lg:text-6xl text-text-primary mb-6 leading-[1.1]"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="flex items-center gap-4 mb-10"
         >
-          <span className="font-playfair italic">Giving</span>{' '}
-          <span className="font-syne font-bold">Back</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Chapter V.</span>
+          <span className="h-px flex-1 bg-rule" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Community</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
+          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-6 leading-[1.05] ink-bleed"
+        >
+          <span className="font-serif italic">Giving</span>{' '}
+          <span className="font-serif font-semibold">Back.</span>
         </motion.h2>
 
-        {/* Intro */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-          className="text-text-muted text-base md:text-lg italic max-w-3xl mb-16 leading-[1.8]"
+          className="font-serif italic text-graphite text-lg max-w-3xl mb-16 leading-[1.8]"
         >
-          Contributing beyond engineering — working on initiatives focused on real-world impact, particularly in healthcare awareness and fundraising at scale.
+          Contributing beyond engineering — working on initiatives focused on real-world impact,
+          particularly in healthcare awareness and fundraising at scale.
         </motion.p>
 
-        {/* Featured card — slides in from right */}
-        <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
+        {/* Featured printed page */}
+        <motion.article
+          initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 1.0, delay: 0.2, ease: EASE }}
-          className="relative editorial-card rounded-xl p-6 md:p-10 border-l-2 border-l-ivory/40 max-w-4xl"
+          transition={{ duration: 1.1, delay: 0.2, ease: EASE }}
+          className="paper-card max-w-4xl px-8 md:px-12 py-10 md:py-14"
+          style={{ transform: 'rotate(-0.4deg)' }}
         >
           {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-start gap-4 mb-3">
-              <span className="text-2xl mt-1" aria-hidden="true">🎗️</span>
-              <div>
-                <h3 className="font-playfair italic font-bold text-2xl md:text-3xl text-text-primary">
-                  Ambassador
-                </h3>
-                <div className="text-text-muted text-sm mt-2">
-                  Shaukat Khanum Memorial Cancer Hospital & Research Centre
-                </div>
-              </div>
+          <header className="border-b border-rule pb-6 mb-8">
+            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-graphite mb-3">
+              Field Notes — Ambassador
             </div>
-            <div className="ml-12 space-y-1">
-              <div className="font-mono text-xs text-text-muted tracking-wide">
-                Full-time · Jan 2025 – Jan 2026 · 1 Year 1 Month
-              </div>
-              <div className="font-mono text-xs text-text-muted tracking-wide">
-                Islamabad, Pakistan · Hybrid
-              </div>
+            <h3 className="font-serif italic font-bold text-3xl md:text-5xl text-ink leading-tight ink-bleed mb-3">
+              Shaukat Khanum Memorial<br />Cancer Hospital &amp; Research Centre
+            </h3>
+            <div className="font-mono text-[11px] text-graphite tracking-wide">
+              Full-time · Jan 2025 – Jan 2026 · 1 Year 1 Month · Islamabad, Pakistan · Hybrid
             </div>
-          </div>
+          </header>
 
-          {/* Bullets — staggered from right */}
-          <ul className="space-y-4">
+          {/* Body — two columns on desktop */}
+          <ul className="space-y-5 columns-1 md:columns-2 md:gap-12">
             {BULLETS.map((bullet, i) => (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: EASE }}
-                className="flex items-start gap-3 text-text-muted text-sm leading-[1.8]"
+                transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: EASE }}
+                className="break-inside-avoid font-serif text-ink-2 text-base md:text-lg leading-[1.85]"
               >
-                <span className="inline-block w-1 h-1 rounded-full bg-white/30 mt-2.5 flex-shrink-0" aria-hidden="true" />
-                <span>{bullet}</span>
+                <span className="font-serif italic text-graphite mr-2" aria-hidden="true">§</span>
+                {bullet}
               </motion.li>
             ))}
           </ul>
-        </motion.div>
+
+          {/* Sign-off */}
+          <div className="mt-10 pt-6 border-t border-rule flex items-center justify-between">
+            <span className="font-hand text-2xl text-ink">— in service,</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-graphite">PKR 250K+ raised</span>
+          </div>
+        </motion.article>
       </div>
     </section>
   )

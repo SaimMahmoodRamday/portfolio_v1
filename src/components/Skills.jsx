@@ -5,138 +5,111 @@ const EASE = [0.16, 1, 0.3, 1]
 const SKILL_GROUPS = [
   {
     label: 'Languages',
-    accent: 'white',
     skills: ['Python', 'C', 'Java', 'JavaScript', 'PHP', 'SQL', 'DAX', 'HTML5', 'CSS3']
   },
   {
     label: 'Frameworks & Libraries',
-    accent: 'white',
     skills: ['FastAPI', 'React', 'Next.js', 'Laravel', 'LangChain', 'PyTorch', 'TensorFlow', 'Keras', 'Java Swing', 'Unity', 'MERN']
   },
   {
     label: 'AI/ML & Computer Vision',
-    accent: 'cyan',
+    featured: true,
     skills: ['Machine Learning', 'Deep Learning', 'Computer Vision', 'YOLO', 'RF-DETR', 'DeepSORT', 'ByteTrack', 'CNNs', 'Time-Series Analysis', 'LLMs', 'RAG', 'Feature Engineering']
   },
   {
     label: 'Systems & DevOps',
-    accent: 'white',
     skills: ['Docker', 'Docker Compose', 'Git', 'Redis', 'Kafka', 'WebRTC', 'WebSockets', 'Azure ML', 'Apache Solr', 'ZooKeeper']
   },
   {
     label: 'Databases & Analytics',
-    accent: 'white',
     skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Power BI', 'Apache Solr']
   }
 ]
 
-function SkillGroup({ group, groupIndex, position }) {
-  const borderColor = group.accent === 'cyan' ? 'border-cyan-400/40' : 'border-white/15'
-  const labelColor = group.accent === 'cyan' ? 'text-cyan-400/70' : 'text-white/40'
-
+function SkillGroup({ group, groupIndex }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.9, delay: groupIndex * 0.12, ease: EASE }}
-      className={position}
+      transition={{ duration: 0.9, delay: groupIndex * 0.1, ease: EASE }}
+      className={`relative ${group.featured ? 'md:col-span-2' : ''}`}
     >
-      {/* Group label */}
-      <div className={`font-mono text-[10px] uppercase tracking-[0.2em] ${labelColor} mb-4`}>
-        {group.label}
+      {/* Group header — magazine subheader */}
+      <div className="flex items-baseline gap-3 mb-5 pb-3 border-b border-rule">
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-graphite">
+          {String(groupIndex + 1).padStart(2, '0')}
+        </span>
+        <h3 className="font-serif italic font-semibold text-2xl text-ink ink-bleed">
+          {group.label}
+        </h3>
       </div>
 
-      {/* Skills list — editorial, left-aligned, one per line with thin left border */}
-      <div className="space-y-0">
+      {/* Typeset list — flowing serif */}
+      <p className="font-serif text-ink-2 text-lg leading-[2] tracking-tight">
         {group.skills.map((skill, i) => (
-          <motion.div
-            key={skill}
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={{ duration: 0.6, delay: groupIndex * 0.08 + i * 0.03, ease: EASE }}
-            className={`border-l ${borderColor} pl-4 py-1.5 text-sm text-white/50 font-sans hover:text-text-primary hover:border-white/40 transition-all duration-400`}
-          >
-            {skill}
-          </motion.div>
+          <span key={skill}>
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: groupIndex * 0.06 + i * 0.04, ease: EASE }}
+              className="inline-block hover:text-ink transition-colors duration-300"
+            >
+              {skill}
+            </motion.span>
+            {i < group.skills.length - 1 && (
+              <span className="text-pencil mx-2 font-serif italic" aria-hidden="true">·</span>
+            )}
+          </span>
         ))}
-      </div>
+      </p>
     </motion.div>
   )
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-shell bg-bg">
+    <section id="skills" className="section-shell bg-paper">
       <div className="container-xl">
-        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="font-syne text-xs uppercase tracking-[0.3em] text-text-muted mb-8"
-        >
-          SKILLS
-        </motion.div>
-
-        {/* Heading — editorial mixed typography */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="text-3xl md:text-5xl lg:text-6xl text-text-primary mb-20 leading-[1.1]"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="flex items-center gap-4 mb-10"
         >
-          <span className="font-playfair italic">Technical</span>{' '}
-          <span className="font-syne font-bold">Stack & Systems Expertise</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Chapter IV.</span>
+          <span className="h-px flex-1 bg-rule" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Stack &amp; Craft</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
+          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-6 leading-[1.05] ink-bleed"
+        >
+          <span className="font-serif italic">Technical</span>{' '}
+          <span className="font-serif font-semibold">Stack &amp; Systems Expertise.</span>
         </motion.h2>
 
-        {/* Diagonal layout: two groups above line, two below, one crossing */}
-        <div className="relative">
-          {/* Top row — 2 groups above the diagonal */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-12">
-            <SkillGroup group={SKILL_GROUPS[0]} groupIndex={0} position="" />
-            <SkillGroup group={SKILL_GROUPS[1]} groupIndex={1} position="md:mt-8" />
-          </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          className="font-hand text-2xl text-graphite mb-16"
+        >
+          — set in print, by category.
+        </motion.p>
 
-          {/* Diagonal line — the visual separator */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 1.2, ease: EASE }}
-            className="relative my-12 md:my-16 overflow-hidden"
-            style={{ transformOrigin: 'left center' }}
-          >
-            <div
-              className="w-full h-[1px]"
-              style={{
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 20%, rgba(0,212,255,0.15) 50%, rgba(255,255,255,0.25) 80%, transparent)',
-                transform: 'rotate(-2deg)'
-              }}
-            />
-            {/* Label on the diagonal */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-6 py-1"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/20">
-                Core Stack
-              </span>
-            </motion.div>
-          </motion.div>
-
-          {/* Center — AI/ML group bridging the divide, offset */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            <SkillGroup group={SKILL_GROUPS[2]} groupIndex={2} position="md:col-span-1 md:-mt-6" />
-            <SkillGroup group={SKILL_GROUPS[3]} groupIndex={3} position="md:col-span-1 md:mt-4" />
-            <SkillGroup group={SKILL_GROUPS[4]} groupIndex={4} position="md:col-span-1 md:mt-10" />
-          </div>
+        {/* Editorial grid — typeset categorized lists */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+          {SKILL_GROUPS.map((g, i) => (
+            <SkillGroup key={g.label} group={g} groupIndex={i} />
+          ))}
         </div>
       </div>
     </section>

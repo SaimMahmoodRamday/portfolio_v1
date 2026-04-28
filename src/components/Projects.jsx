@@ -12,7 +12,7 @@ function GitHubIcon(props) {
 
 function ArrowIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <path d="M7 17L17 7M17 7H7M17 7v10" />
     </svg>
   )
@@ -61,189 +61,157 @@ const PROJECTS = [
   }
 ]
 
-const IMAGE_COMMENTS = {
+const IMAGE_MONO = {
   'project-inspector': 'PI',
   'vision-slice': 'VS',
   'medical-search': 'DMS'
 }
 
-function ProjectCard({ project, index, large }) {
+function ProjectCard({ project, index }) {
+  const monogram = IMAGE_MONO[project.imageKey] || 'PE'
+  // alternating slight rotation for stacked-paper feel
+  const tilt = index % 2 === 0 ? '-0.4deg' : '0.4deg'
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 60 }}
-      whileInView={{ opacity: 1, x: 0 }}
+    <motion.article
+      initial={{ opacity: 0, y: 36, filter: 'blur(8px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.9, delay: index * 0.15, ease: EASE }}
-      whileHover={{ y: -4 }}
-      className={`group editorial-card rounded-xl overflow-hidden flex flex-col transition-all duration-500 ${
-        large ? 'md:col-span-7' : 'md:col-span-5'
-      }`}
+      transition={{ duration: 1.0, delay: index * 0.12, ease: EASE }}
+      style={{ transform: `rotate(${tilt})` }}
+      className="paper-card group flex flex-col overflow-hidden"
     >
-      {/* Image area */}
-      <div className="relative aspect-video overflow-hidden bg-surface">
-        {project.imageKey ? (
-          <>
-            {project.imageKey === 'project-inspector' && (
-              <>
-                {/*
-                  PROJECT IMAGE — Replace with:
-                  <img src="./assets/project-inspector.jpg" alt="Project Inspector" className="w-full h-full object-cover" />
-                  Download from: https://github.com/SaimMahmoodRamday/project-inspector/raw/main/assets/projectinspectorgit.jpg
-                  Save as: src/assets/project-inspector.jpg
-                */}
-                <div className="w-full h-full shimmer" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="font-playfair italic font-bold text-5xl text-white/10">PI</div>
-                </div>
-              </>
-            )}
-            {project.imageKey === 'vision-slice' && (
-              <>
-                {/*
-                  PROJECT IMAGE — Replace with:
-                  <img src="./assets/vision-slice.jpg" alt="VisionSlice" className="w-full h-full object-cover" />
-                  Download from: https://github.com/SaimMahmoodRamday/vision-slice/raw/main/assets/visionslicegit.png
-                  Save as: src/assets/vision-slice.jpg
-                */}
-                <div className="w-full h-full shimmer" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="font-playfair italic font-bold text-5xl text-white/10">VS</div>
-                </div>
-              </>
-            )}
-            {project.imageKey === 'medical-search' && (
-              <>
-                {/*
-                  PROJECT IMAGE — Replace with:
-                  <img src="./assets/medical-search.jpg" alt="Distributed Medical Search Engine" className="w-full h-full object-cover" />
-                  Download from: https://github.com/SaimMahmoodRamday/Distributed-Medical-Search-Engine/raw/main/assets/searchenginegit.jpg
-                  Save as: src/assets/medical-search.jpg
-                */}
-                <div className="w-full h-full shimmer" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="font-playfair italic font-bold text-5xl text-white/10">DMS</div>
-                </div>
-              </>
-            )}
-          </>
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-white/[0.03] to-white/[0.01] flex items-center justify-center">
-                  <div className="font-playfair italic font-bold text-5xl text-white/10">PE</div>
-                  </div>
-        )}
+      {/* Case study header — printed metadata strip */}
+      <header className="px-7 pt-7 pb-4 border-b border-rule">
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-graphite">
+            Case № {String(index + 1).padStart(2, '0')}
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink">
+            {project.badge}
+          </span>
+        </div>
+        <h3 className="font-serif italic font-bold text-3xl md:text-4xl text-ink leading-tight ink-bleed">
+          {project.title}
+        </h3>
+      </header>
+
+      {/* Plate / preview — paper-mounted */}
+      <div className="px-7 pt-6">
+        <div className="relative aspect-[16/9] overflow-hidden bg-paper-deep border border-rule">
+          {project.imageKey ? (
+            <>
+              <div className="w-full h-full shimmer" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="font-serif italic font-bold text-6xl text-ink/15">{monogram}</div>
+              </div>
+            </>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="font-serif italic font-bold text-6xl text-ink/15">PE</div>
+            </div>
+          )}
+          {/* corner caption */}
+          <div className="absolute bottom-2 left-2 font-mono text-[9px] uppercase tracking-wider text-graphite bg-paper/85 px-1.5 py-0.5">
+            Fig. {index + 1}
+          </div>
+        </div>
       </div>
 
-      {/* Badge — editorial ivory */}
-      <div className="absolute top-3 right-3 z-10">
-        <span className="inline-block px-2.5 py-1 font-mono text-[10px] text-ivory/70 tracking-wider uppercase">
-          {project.badge}
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-6">
-        {/* Tags — minimal editorial */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block px-2 py-0.5 rounded bg-white/[0.06] font-mono text-[10px] text-white/50 tracking-wide"
-            >
+      {/* Body */}
+      <div className="flex flex-col flex-1 p-7">
+        {/* Tags — typeset list */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-graphite">
+          {project.tags.map((tag, i) => (
+            <span key={tag} className="inline-flex items-center">
+              {i > 0 && <span className="mr-3 text-pencil">·</span>}
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Title */}
-        <h3 className="font-syne font-bold text-xl text-text-primary mb-3 group-hover:text-ivory transition-colors duration-500">
-          {project.title}
-        </h3>
+        <p className="font-serif text-ink-2 text-base leading-[1.75] flex-1">
+          {project.description}
+        </p>
 
-        {/* Description */}
-        <p className="text-text-muted text-sm leading-[1.7] flex-1">{project.description}</p>
-
-        {/* Performance strip */}
         {project.perfStrip && (
-          <div className="mt-4 py-2 border-t border-white/[0.06] font-mono text-[11px] text-text-muted tracking-wider">
+          <div className="mt-5 py-2 border-t border-b border-rule font-mono text-[11px] tracking-[0.15em] text-ink text-center">
             {project.perfStrip}
           </div>
         )}
 
-        {/* Bottom links */}
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.06]">
+        {/* Footer */}
+        <div className="flex items-center justify-between mt-6 pt-5 border-t border-rule">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${project.title} on GitHub`}
-            className="inline-flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors duration-500 text-sm"
+            className="inline-flex items-center gap-2 text-graphite hover:text-ink transition-colors duration-500"
           >
             <GitHubIcon className="w-4 h-4" />
-            <span className="font-mono text-[11px] uppercase tracking-wider">Source</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Source</span>
           </a>
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${project.title}`}
-            className="inline-flex items-center justify-center w-8 h-8 rounded border border-white/10 text-text-muted hover:text-text-primary hover:border-white/30 transition-all duration-500"
+            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-ink group/link"
           >
-            <ArrowIcon className="w-4 h-4" />
+            Read in full
+            <ArrowIcon className="w-3.5 h-3.5 transition-transform duration-500 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
           </a>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   )
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-shell bg-bg">
+    <section id="projects" className="section-shell bg-paper">
       <div className="container-xl">
-        {/* Section label */}
+        {/* Folio header */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="font-syne text-xs uppercase tracking-[0.3em] text-text-muted mb-8"
-        >
-          PROJECTS
-        </motion.div>
-
-        {/* Heading — editorial mixed typography */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="text-3xl md:text-5xl lg:text-6xl text-text-primary mb-4 leading-[1.1]"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="flex items-center gap-4 mb-10"
         >
-          <span className="font-playfair italic">What</span>{' '}
-          <span className="font-syne font-bold">I&rsquo;ve Built</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Chapter II.</span>
+          <span className="h-px flex-1 bg-rule" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Case Studies</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
+          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-4 leading-[1.05] ink-bleed"
+        >
+          <span className="font-serif italic">What</span>{' '}
+          <span className="font-serif font-semibold">I&rsquo;ve Built.</span>
         </motion.h2>
 
-        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-          className="text-text-muted text-base md:text-lg max-w-2xl mb-16"
+          className="font-serif italic text-graphite text-lg max-w-2xl mb-16"
         >
-          Production-grade systems across AI, distributed computing, and computer vision
+          Production-grade systems across AI, distributed computing, and computer vision —
+          set in print as case studies.
         </motion.p>
 
-        {/* Asymmetric editorial grid */}
-        {/* Row 1: large (60%) + small (40%) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-          <ProjectCard project={PROJECTS[0]} index={0} large={true} />
-          <ProjectCard project={PROJECTS[1]} index={1} large={false} />
-        </div>
-        {/* Row 2: small (40%) + large (60%) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <ProjectCard project={PROJECTS[2]} index={2} large={false} />
-          <ProjectCard project={PROJECTS[3]} index={3} large={true} />
+        {/* Two-column grid of paper case studies */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          {PROJECTS.map((p, i) => (
+            <ProjectCard key={p.title} project={p} index={i} />
+          ))}
         </div>
       </div>
     </section>

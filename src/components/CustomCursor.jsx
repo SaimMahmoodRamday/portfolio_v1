@@ -20,14 +20,14 @@ export default function CustomCursor() {
       }}
     >
       <motion.div
-        animate={{ scale: hovering ? 2 : 1, opacity: hovering ? 0.5 : 0.9 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        animate={{ scale: hovering ? 2.4 : 1, opacity: hovering ? 0.45 : 0.92 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
         style={{
-          width: 8,
-          height: 8,
+          width: 7,
+          height: 7,
           borderRadius: '50%',
-          background: '#00d4ff',
-          boxShadow: '0 0 10px rgba(0, 212, 255, 0.4)',
+          background: '#171411',
+          boxShadow: '0 0 0 1px rgba(23,20,17,0.15), 0 6px 14px -6px rgba(23,20,17,0.4)',
           transform: 'translate(-50%, -50%)'
         }}
       />

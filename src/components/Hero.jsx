@@ -29,7 +29,7 @@ function LinkedInIcon(props) {
 
 function MailIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <rect x="3" y="5" width="18" height="14" rx="2.5" />
       <path d="m3 7 9 6 9-6" />
     </svg>
@@ -42,122 +42,106 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-center overflow-hidden pt-24 md:pt-28"
+      className="relative min-h-screen w-full flex items-center overflow-hidden pt-24 md:pt-28 bg-paper"
     >
-      {/* Background — static subtle radial gradient only */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0, 212, 255, 0.06), transparent 60%), radial-gradient(ellipse 60% 50% at 70% 60%, rgba(139, 92, 246, 0.04), transparent 50%)'
-          }}
-        />
-        {/* Vignette */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse at center, transparent 40%, rgba(10, 15, 30, 0.7) 100%)'
-          }}
-        />
-      </div>
-
-      <div className="container-xl px-5 md:px-8 w-full">
-        {/* Label above name */}
+      <div className="container-xl px-5 md:px-8 w-full relative">
+        {/* Masthead — magazine cover top strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="font-mono text-[11px] uppercase tracking-[0.25em] text-text-muted mb-6"
+          className="flex items-end justify-between border-b border-ink/80 pb-3 mb-10"
         >
-          Full-Stack AI/ML Engineer
+          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink">
+            Vol. I &nbsp;·&nbsp; Portfolio
+          </div>
+          <div className="hidden sm:block font-serif italic text-graphite text-sm">
+            an editorial of work, ink-pressed
+          </div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink">
+            № 01
+          </div>
+        </motion.div>
+
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          className="font-mono text-[11px] uppercase tracking-[0.3em] text-graphite mb-8"
+        >
+          The Folio of <span className="text-ink">— Saim Mahmood</span> &nbsp;·&nbsp; Full-Stack AI/ML Engineer
         </motion.div>
 
         {/* Name + Photo row */}
-        <div className="flex flex-col md:flex-row md:items-end md:gap-10 mb-8">
-          {/* Name — massive Playfair italic */}
+        <div className="flex flex-col md:flex-row md:items-end md:gap-12 mb-10">
+          {/* Name — massive Cormorant italic, magazine cover */}
           <motion.h1
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.2, ease: EASE }}
-            className="font-playfair italic font-bold text-7xl sm:text-8xl md:text-[9rem] leading-[0.85] tracking-tight hero-name-glow text-text-primary"
+            initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.2, delay: 0.3, ease: EASE }}
+            className="font-serif italic font-bold text-7xl sm:text-8xl md:text-[10rem] leading-[0.85] tracking-tight text-ink ink-bleed"
           >
             Saim
-            <br className="md:hidden" />
-            <span className="md:ml-6"> Mahmood</span>
+            <br />
+            <span className="not-italic font-normal">Mahmood</span>
           </motion.h1>
 
-          {/* Photo placeholder — positioned right of name on desktop */}
+          {/* Photo — framed plate, paper-mounted */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -8, 0], rotate: [0, 0.6, 0] }}
-            transition={{ duration: 6, delay: 0.5, ease: 'easeInOut', repeat: Infinity }}
-            className="relative mt-8 md:mt-0 md:mb-4 flex-shrink-0 self-center md:self-end"
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.0, delay: 0.6, ease: EASE }}
+            className="relative mt-10 md:mt-0 md:mb-3 flex-shrink-0 self-center md:self-end"
           >
-            {/* Soft rotating aura for depth */}
+            {/* Paper mat — soft drop shadow simulating stacked paper */}
             <motion.div
-              aria-hidden="true"
-              className="absolute -inset-5 rounded-[2rem] opacity-50"
-              style={{
-                background: 'conic-gradient(from 0deg, rgba(56,189,248,0.34), rgba(168,85,247,0.25), rgba(244,114,182,0.2), rgba(56,189,248,0.34))',
-                filter: 'blur(16px)'
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 16, ease: 'linear', repeat: Infinity }}
-            />
-            {/* Thin rotating accent ring */}
-            <motion.div
-              aria-hidden="true"
-              className="absolute -inset-2 rounded-[1.95rem] border border-white/20"
-              style={{
-                maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
-              }}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
-            />
-            {/* Frame */}
-            <motion.div
-              whileHover={{ scale: 1.035, y: -4 }}
-              transition={{ type: 'spring', stiffness: 180, damping: 14 }}
-              className="relative w-[235px] h-[235px] sm:w-[270px] sm:h-[270px] md:w-[315px] md:h-[315px] rounded-[1.75rem] border border-white/20 overflow-hidden bg-surface/80 backdrop-blur-sm shadow-[0_24px_70px_rgba(0,0,0,0.5)]"
+              whileHover={{ y: -6, rotate: -0.4 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+              className="relative bg-paper p-3 shadow-paper"
+              style={{ transform: 'rotate(-1.2deg)' }}
             >
-              <img
-                src={profilePhoto}
-                alt="Saim Mahmood"
-                className="w-full h-full object-cover rounded-[1.75rem]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/30 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-white/15 pointer-events-none" />
-              <motion.div
-                aria-hidden="true"
-                className="absolute -inset-x-8 -top-12 h-24 bg-white/15 blur-2xl pointer-events-none"
-                animate={{ x: ['-30%', '130%'] }}
-                transition={{ duration: 2.8, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3.2 }}
-              />
+              <div className="relative w-[230px] h-[280px] sm:w-[260px] sm:h-[315px] md:w-[280px] md:h-[340px] overflow-hidden bg-paper-deep">
+                <img
+                  src={profilePhoto}
+                  alt="Saim Mahmood"
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'grayscale(1) contrast(1.05) sepia(0.12)' }}
+                />
+                {/* Ink wash overlay */}
+                <div className="absolute inset-0 pointer-events-none mix-blend-multiply" style={{ background: 'linear-gradient(180deg, transparent 60%, rgba(23,20,17,0.18) 100%)' }} />
+              </div>
+              {/* Caption — handwritten */}
+              <div className="mt-3 px-1 flex items-center justify-between">
+                <span className="font-hand text-base text-ink">— the engineer</span>
+                <span className="font-mono text-[9px] tracking-wider uppercase text-graphite">Plate I.</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Typewriter — framed with rules like a magazine pull quote */}
+        {/* Pull quote / typewriter — between rules */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
+          transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
           className="max-w-2xl mb-10"
         >
-          <div className="border-t border-b border-white/10 py-4">
-            <div className="font-mono text-sm md:text-base text-text-muted" aria-live="polite">
-              <span>&gt; {typed}</span>
+          <div className="border-t border-b border-rule py-4">
+            <div className="font-mono text-sm md:text-base text-graphite" aria-live="polite">
+              <span className="text-ink">› </span>
+              <span>{typed}</span>
               <span className="caret" aria-hidden="true" />
             </div>
           </div>
         </motion.div>
 
-        {/* Body paragraph */}
+        {/* Lede — drop-cap editorial paragraph */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
-          className="text-text-muted text-base md:text-lg max-w-2xl leading-relaxed mb-10"
+          transition={{ duration: 0.8, delay: 1.0, ease: EASE }}
+          className="font-serif text-lg md:text-xl max-w-2xl leading-[1.7] mb-12 text-ink-2 drop-cap"
         >
           AI/ML Engineer focused on building production-grade intelligent systems — from
           raw data ingestion to real-time inference and deployment. I design and implement
@@ -165,21 +149,20 @@ export default function Hero() {
           that turn complex, unstructured problems into reliable, measurable outcomes.
         </motion.p>
 
-        {/* CTA — editorial text links, no filled buttons */}
+        {/* Editorial CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
-          className="flex flex-wrap gap-8 mb-12"
+          transition={{ duration: 0.8, delay: 1.2, ease: EASE }}
+          className="flex flex-wrap gap-10 mb-14"
         >
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             aria-label="View projects"
-            className="group font-syne text-sm uppercase tracking-[0.12em] text-text-primary hover:text-ivory transition-colors duration-500"
+            className="group font-mono text-xs uppercase tracking-[0.22em] text-ink"
           >
-            View Projects
-            <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
-            <span className="block h-[1px] w-0 group-hover:w-full bg-white/40 transition-all duration-500 mt-1" />
+            Turn the page → Projects
+            <span className="block h-[1px] w-full bg-ink scale-x-100 group-hover:scale-x-110 origin-left transition-transform duration-500 mt-1.5" />
           </button>
           <a
             href="#contact"
@@ -188,20 +171,19 @@ export default function Hero() {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
             }}
             aria-label="Download resume"
-            className="group font-syne text-sm uppercase tracking-[0.12em] text-text-muted hover:text-text-primary transition-colors duration-500"
+            className="group font-mono text-xs uppercase tracking-[0.22em] text-graphite hover:text-ink transition-colors duration-500"
           >
-            Download Resume
-            <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
-            <span className="block h-[1px] w-0 group-hover:w-full bg-white/20 transition-all duration-500 mt-1" />
+            Resume — printed
+            <span className="block h-[1px] w-full bg-graphite scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 mt-1.5" />
           </a>
         </motion.div>
 
-        {/* Social icons */}
+        {/* Social — minimal ink stamps */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3, ease: EASE }}
-          className="flex items-center gap-4"
+          transition={{ duration: 0.8, delay: 1.35, ease: EASE }}
+          className="flex items-center gap-3"
         >
           {[
             { href: 'https://github.com/SaimMahmoodRamday', label: 'GitHub', Icon: GitHubIcon },
@@ -214,27 +196,27 @@ export default function Hero() {
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={label}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 text-text-muted hover:text-text-primary hover:border-white/30 transition-all duration-500"
+              className="inline-flex items-center justify-center w-10 h-10 border border-rule text-graphite hover:text-ink hover:border-ink transition-all duration-500"
             >
-              <Icon className="w-4.5 h-4.5" />
+              <Icon className="w-4 h-4" />
             </a>
           ))}
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll mark */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted font-mono text-[10px] uppercase tracking-widest"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-graphite font-mono text-[10px] uppercase tracking-widest"
         aria-hidden="true"
       >
-        <span>Scroll</span>
+        <span>turn page</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent"
+          className="w-px h-8 bg-gradient-to-b from-ink/50 to-transparent"
         />
       </motion.div>
     </section>

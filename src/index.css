@@ -1,83 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: #0a0f1e;
-  --color-surface: #0d1424;
-  --color-cyan: #00d4ff;
-  --color-ivory: #f0ece4;
-  --color-text: #e8edf5;
-  --color-muted: #6b7fa3;
-  --color-border: rgba(255, 255, 255, 0.15);
+  --paper: #f3ede1;
+  --paper-2: #ebe3d3;
+  --paper-deep: #e3d9c5;
+  --ink: #171411;
+  --ink-2: #2a2520;
+  --graphite: #5b554d;
+  --pencil: #8a8278;
+  --rule: rgba(23, 20, 17, 0.18);
+  --rule-soft: rgba(23, 20, 17, 0.10);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 @media (pointer: fine) {
-  html, body {
-    cursor: none;
-  }
-  a, button, input, textarea, [role="button"] {
-    cursor: none;
-  }
+  html, body { cursor: none; }
+  a, button, input, textarea, [role="button"] { cursor: none; }
 }
 
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+/* Paper texture — subtle warm fiber pattern, fixed so it feels like the page itself */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(120, 90, 60, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(90, 70, 50, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(180, 150, 110, 0.03) 0%, transparent 60%);
 }
-::-webkit-scrollbar-track {
-  background: #0a0f1e;
+
+/* Grain overlay — film/print noise */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  background-size: 220px 220px;
 }
+
+#root { position: relative; z-index: 2; }
+
+/* Scrollbar — ink on paper */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--paper); }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
+  background: rgba(23, 20, 17, 0.25);
+  border-radius: 1px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
+::-webkit-scrollbar-thumb:hover { background: rgba(23, 20, 17, 0.45); }
 
-/* Selection */
+/* Selection — ink wash */
 ::selection {
-  background: rgba(240, 236, 228, 0.2);
-  color: #e8edf5;
+  background: rgba(23, 20, 17, 0.85);
+  color: var(--paper);
 }
 
-/* Section divider — clean single rule */
+/* Ink bleed for headings — very subtle blur halo */
+.ink-bleed {
+  text-shadow:
+    0 0 0.5px currentColor,
+    0 0 1.2px rgba(23, 20, 17, 0.12),
+    0.3px 0.3px 0 rgba(23, 20, 17, 0.05);
+}
+
+/* Hairline editorial rule */
 .editorial-rule {
   height: 1px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--rule);
 }
 
-/* Shimmer placeholder */
+/* Double rule — magazine style */
+.double-rule {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  height: 4px;
+}
+
+/* Shimmer placeholder — paper-tone */
 .shimmer {
   background: linear-gradient(
     90deg,
-    #0d1424 0%,
-    #1a2340 50%,
-    #0d1424 100%
+    var(--paper-2) 0%,
+    var(--paper-deep) 50%,
+    var(--paper-2) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 2.5s ease-in-out infinite;
@@ -88,12 +119,12 @@ body {
   100% { background-position: -200% 0; }
 }
 
-/* Blinking cursor for typewriter */
+/* Typewriter caret */
 .caret {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--ink);
   margin-left: 4px;
   vertical-align: -2px;
   animation: caret-blink 1s steps(1) infinite;
@@ -104,13 +135,13 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-/* Section container — generous editorial spacing */
+/* Section container */
 .section-shell {
   position: relative;
-  padding: 8rem 1.25rem;
+  padding: 7rem 1.25rem;
 }
 @media (min-width: 768px) {
-  .section-shell { padding: 10rem 2rem; }
+  .section-shell { padding: 9rem 2rem; }
 }
 
 .container-xl {
@@ -119,21 +150,65 @@ body {
   width: 100%;
 }
 
-/* Editorial card — flat, sharp, no blur */
-.editorial-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Paper card — stacked-paper feel with soft warm shadow */
+.paper-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 0 rgba(23, 20, 17, 0.04),
+    0 8px 24px -12px rgba(23, 20, 17, 0.18),
+    0 24px 48px -28px rgba(23, 20, 17, 0.22);
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
-.editorial-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+.paper-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px -2px auto auto;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(225deg, transparent 50%, rgba(23,20,17,0.06) 50%, var(--paper-deep) 100%);
+  border-bottom-left-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+.paper-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 2px 0 rgba(23, 20, 17, 0.05),
+    0 18px 38px -18px rgba(23, 20, 17, 0.28),
+    0 40px 70px -40px rgba(23, 20, 17, 0.30);
+}
+.paper-card:hover::before { opacity: 1; }
+
+/* Editorial card — alias kept for legacy refs */
+.editorial-card { @apply paper-card; }
+
+/* Section reveal: blur → sharp ink settling */
+.ink-reveal {
+  animation: ink-settle 1.0s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes ink-settle {
+  0%   { opacity: 0; filter: blur(8px); transform: translateY(8px); }
+  60%  { opacity: 0.85; filter: blur(1.5px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-/* Hero name glow — the ONE place we allow glow */
-.hero-name-glow {
-  text-shadow: 0 0 80px rgba(0, 212, 255, 0.15), 0 0 160px rgba(0, 212, 255, 0.06);
+/* Headline drop cap utility */
+.drop-cap::first-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 4.2em;
+  float: left;
+  line-height: 0.85;
+  margin: 0.08em 0.08em 0 0;
+  color: var(--ink);
 }
 
-/* Respect reduced motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -142,9 +217,13 @@ body {
   }
 }
 
-/* Slow spin for photo ring — subtle */
 @keyframes slow-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.ring-spin { animation: slow-spin 12s linear infinite; }
+.ring-spin { animation: slow-spin 22s linear infinite; }
+
+/* Paper background variants */
+.bg-paper { background-color: var(--paper); }
+.bg-paper-2 { background-color: var(--paper-2); }
+.bg-paper-deep { background-color: var(--paper-deep); }

@@ -49,57 +49,65 @@ const EXPERIENCES = [
 function TimelineEntry({ entry, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 60 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.9, delay: index * 0.2, ease: EASE }}
-      className="relative pl-10 md:pl-14 pb-20 last:pb-0"
+      transition={{ duration: 1.0, delay: index * 0.18, ease: EASE }}
+      className="relative pl-12 md:pl-20 pb-16 last:pb-0"
     >
-      {/* Timeline dot */}
+      {/* Margin date — left rail */}
+      <div className="absolute left-0 top-1 w-9 md:w-16 text-left">
+        <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-graphite hidden md:block leading-snug">
+          {entry.period.split('–')[0].trim()}
+        </div>
+      </div>
+
+      {/* Timeline mark — ink dot */}
       <motion.div
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.6, delay: index * 0.2 + 0.2, type: 'spring', stiffness: 260, damping: 20 }}
-        className="absolute left-0 md:left-[1px] top-2 w-3 h-3 rounded-full bg-white/80 border-4 border-bg z-10"
+        transition={{ duration: 0.6, delay: index * 0.18 + 0.2, type: 'spring', stiffness: 260, damping: 20 }}
+        aria-hidden="true"
+        className="absolute left-[14px] md:left-[42px] top-2 w-2.5 h-2.5 rounded-full bg-ink ring-4 ring-paper-2 z-10"
       />
 
-      {/* Card */}
-      <div className="editorial-card rounded-xl p-6 md:p-8 transition-all duration-500">
-        {/* Header */}
-        <div className="mb-6">
-          <h3 className="font-syne font-bold text-2xl md:text-3xl text-text-primary mb-2">
+      {/* Entry */}
+      <article>
+        <header className="mb-5">
+          <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-graphite mb-2">
+            {entry.role}
+          </div>
+          <h3 className="font-serif italic font-bold text-3xl md:text-4xl text-ink leading-tight ink-bleed">
             {entry.company}
           </h3>
-          <div className="font-mono text-sm text-ivory/70 mb-1">{entry.role}</div>
-          <div className="font-mono text-xs text-text-muted tracking-wide">
+          <div className="font-mono text-[11px] text-graphite tracking-wide mt-2">
             {entry.period}
             {entry.location && ` · ${entry.location}`}
           </div>
-        </div>
+        </header>
 
-        {/* Tags — minimal editorial */}
-        <div className="flex flex-wrap gap-1.5 mb-6">
-          {entry.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block px-2 py-0.5 rounded bg-white/[0.06] font-mono text-[10px] text-white/50 tracking-wide"
-            >
+        {/* Tags — typeset */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-graphite">
+          {entry.tags.map((tag, i) => (
+            <span key={tag} className="inline-flex items-center">
+              {i > 0 && <span className="mr-3 text-pencil">·</span>}
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Bullets */}
         <ul className="space-y-3">
           {entry.bullets.map((bullet, i) => (
-            <li key={i} className="flex items-start gap-3 text-text-muted text-sm leading-[1.7]">
-              <span className="inline-block w-1 h-1 rounded-full bg-white/30 mt-2.5 flex-shrink-0" aria-hidden="true" />
+            <li key={i} className="flex items-start gap-3 font-serif text-ink-2 text-base md:text-lg leading-[1.8]">
+              <span className="font-serif italic text-graphite text-base flex-shrink-0 mt-0.5" aria-hidden="true">
+                §
+              </span>
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
-      </div>
+      </article>
     </motion.div>
   )
 }
@@ -113,41 +121,38 @@ export default function Experience() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="experience" className="section-shell bg-surface">
+    <section id="experience" className="section-shell bg-paper-2">
       <div className="container-xl">
-        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="font-syne text-xs uppercase tracking-[0.3em] text-text-muted mb-8"
-        >
-          EXPERIENCE
-        </motion.div>
-
-        {/* Heading — editorial mixed typography */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="text-3xl md:text-5xl lg:text-6xl text-text-primary mb-16 leading-[1.1]"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="flex items-center gap-4 mb-10"
         >
-          <span className="font-playfair italic">Where</span>{' '}
-          <span className="font-syne font-bold">I&rsquo;ve Worked</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Chapter III.</span>
+          <span className="h-px flex-1 bg-rule" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite">Experience</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
+          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-16 leading-[1.05] ink-bleed"
+        >
+          <span className="font-serif italic">Where</span>{' '}
+          <span className="font-serif font-semibold">I&rsquo;ve Worked.</span>
         </motion.h2>
 
-        {/* Timeline container */}
+        {/* Timeline — printed in the margin of the page */}
         <div ref={containerRef} className="relative max-w-3xl">
-          {/* Animated vertical line — thin, editorial */}
           <motion.div
             style={{ scaleY: lineScale, transformOrigin: 'top' }}
-            className="absolute left-[5px] md:left-[6px] top-0 bottom-0 w-[1px] bg-white/20"
+            className="absolute left-[19px] md:left-[47px] top-0 bottom-0 w-[1px] bg-ink/30"
             aria-hidden="true"
           />
-
-          {/* Entries */}
           {EXPERIENCES.map((entry, i) => (
             <TimelineEntry key={entry.company} entry={entry} index={i} />
           ))}

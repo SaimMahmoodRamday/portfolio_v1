@@ -20,7 +20,7 @@ function LinkedInIcon(props) {
 
 function MailIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <rect x="3" y="5" width="18" height="14" rx="2.5" />
       <path d="m3 7 9 6 9-6" />
     </svg>
@@ -40,29 +40,34 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.8, ease: EASE }}
-      className="relative min-h-[40vh] flex items-center justify-center px-5 md:px-8 overflow-hidden"
+      className="relative min-h-[40vh] flex items-center justify-center px-5 md:px-8 overflow-hidden bg-paper-deep"
     >
-      {/* Top rule */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-white/10" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-rule" aria-hidden="true" />
 
       {/* Watermark — faded large name behind content */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         aria-hidden="true"
       >
-        <div className="font-playfair italic font-bold text-[8rem] md:text-[14rem] lg:text-[18rem] text-white/[0.03] leading-none whitespace-nowrap tracking-tight">
+        <div className="font-serif italic font-bold text-[7rem] md:text-[14rem] lg:text-[18rem] text-ink/[0.06] leading-none whitespace-nowrap tracking-tight">
           Saim Mahmood
         </div>
       </div>
 
       <div className="container-xl relative z-10 text-center py-16">
-        {/* Attribution */}
-        <p className="text-text-muted text-sm mb-6">
-          <span className="font-playfair italic font-bold text-text-primary text-base">Saim Mahmood</span>
-          <span className="mx-3 text-white/15">·</span>
+        {/* Colophon */}
+        <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-graphite mb-4">
+          — Colophon —
+        </div>
+
+        <p className="font-serif italic text-ink text-xl md:text-2xl mb-2 ink-bleed">
+          Set in Cormorant Garamond &amp; Inter,
+        </p>
+        <p className="font-serif text-graphite text-base mb-8">
+          pressed onto warm paper by{' '}
+          <span className="font-serif italic font-bold text-ink">Saim Mahmood</span>.
         </p>
 
-        {/* Social links */}
         <div className="flex items-center justify-center gap-3 mb-8">
           {SOCIAL_LINKS.map(({ href, label, Icon }) => (
             <a
@@ -71,16 +76,15 @@ export default function Footer() {
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={label}
-              className="inline-flex items-center justify-center w-9 h-9 rounded border border-white/10 text-text-muted hover:text-text-primary hover:border-white/30 transition-all duration-500"
+              className="inline-flex items-center justify-center w-10 h-10 border border-rule text-graphite hover:text-ink hover:border-ink transition-all duration-500"
             >
               <Icon className="w-4 h-4" />
             </a>
           ))}
         </div>
 
-        {/* Copyright */}
-        <p className="text-white/20 font-mono text-[10px] tracking-[0.2em] uppercase">
-          © {new Date().getFullYear()} All rights reserved.
+        <p className="text-graphite font-mono text-[10px] tracking-[0.25em] uppercase">
+          © {new Date().getFullYear()} · All rights reserved · No. 01
         </p>
       </div>
     </motion.footer>

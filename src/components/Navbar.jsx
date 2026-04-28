@@ -21,7 +21,6 @@ export default function Navbar() {
     return () => unsub()
   }, [scrollY])
 
-  // Observe sections to drive active-link indicator
   useEffect(() => {
     const sectionIds = LINKS.map((l) => l.id)
     const observer = new IntersectionObserver(
@@ -53,7 +52,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'backdrop-blur-sm bg-[#0a0f1e]/80 border-b border-white/5'
+            ? 'bg-paper/85 backdrop-blur-[2px] border-b border-rule'
             : 'bg-transparent'
         }`}
       >
@@ -61,7 +60,7 @@ export default function Navbar() {
           aria-label="Primary"
           className="container-xl flex items-center justify-between px-5 md:px-8 h-16 md:h-20"
         >
-          {/* Logo — Playfair italic */}
+          {/* Logo — serif italic monogram with revolving editorial mark */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Go to top"
@@ -72,7 +71,7 @@ export default function Navbar() {
               className="absolute inset-0 w-full h-full"
               aria-hidden="true"
               animate={{ rotate: 360 }}
-              transition={{ duration: 14, ease: 'linear', repeat: Infinity }}
+              transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
             >
               <defs>
                 <path
@@ -81,21 +80,22 @@ export default function Navbar() {
                 />
               </defs>
               <text
-                className="font-syne uppercase tracking-[0.12em] fill-white/70"
-                fontSize="11"
+                className="font-mono uppercase tracking-[0.18em] fill-graphite"
+                fontSize="9"
+                letterSpacing="1"
               >
                 <textPath href="#nav-global-circle-path" startOffset="50%" textAnchor="middle">
-                  GLOBALLY AVAILABLE
+                  · GLOBALLY · AVAILABLE · SAIM MAHMOOD ·
                 </textPath>
               </text>
             </motion.svg>
-            <span className="relative z-10 font-playfair italic font-bold text-2xl tracking-tight text-text-primary">
+            <span className="relative z-10 font-serif italic font-bold text-3xl tracking-tight text-ink ink-bleed">
               SM
             </span>
           </button>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-1 font-syne text-[11px]">
+          <ul className="hidden md:flex items-center gap-1 font-mono text-[11px]">
             {LINKS.map((link) => {
               const isActive = active === link.id
               return (
@@ -103,16 +103,15 @@ export default function Navbar() {
                   <button
                     onClick={() => handleNavClick(link.id)}
                     aria-label={`Go to ${link.label}`}
-                    className={`relative px-3 py-2 uppercase tracking-[0.15em] transition-all duration-500 ${
-                      isActive ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
+                    className={`relative px-3 py-2 uppercase tracking-[0.18em] transition-all duration-500 ${
+                      isActive ? 'text-ink' : 'text-graphite hover:text-ink'
                     }`}
                   >
                     {link.label}
-                    {/* Active: thin bottom border */}
                     {isActive && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute left-3 right-3 -bottom-0.5 h-[1px] bg-white/60"
+                        className="absolute left-3 right-3 -bottom-0.5 h-[1px] bg-ink"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -126,22 +125,22 @@ export default function Navbar() {
           <button
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center text-text-primary"
+            className="md:hidden relative w-10 h-10 flex items-center justify-center text-ink"
             onClick={() => setMobileOpen((o) => !o)}
           >
             <span className="sr-only">Toggle menu</span>
             <div className="flex flex-col gap-1.5">
               <motion.span
                 animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 6 : 0 }}
-                className="block h-[1px] w-6 bg-text-primary"
+                className="block h-[1px] w-6 bg-ink"
               />
               <motion.span
                 animate={{ opacity: mobileOpen ? 0 : 1 }}
-                className="block h-[1px] w-6 bg-text-primary"
+                className="block h-[1px] w-6 bg-ink"
               />
               <motion.span
                 animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -6 : 0 }}
-                className="block h-[1px] w-6 bg-text-primary"
+                className="block h-[1px] w-6 bg-ink"
               />
             </div>
           </button>
@@ -157,19 +156,19 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 md:hidden backdrop-blur-sm bg-[#0a0f1e]/95"
+            className="fixed inset-0 z-40 md:hidden bg-paper/97"
           >
-            <ul className="h-full flex flex-col items-center justify-center gap-8 font-playfair text-3xl italic">
+            <ul className="h-full flex flex-col items-center justify-center gap-8 font-serif text-4xl italic text-ink">
               {LINKS.map((link, i) => (
                 <motion.li
                   key={link.id}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 * i + 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: -20, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: 0.08 * i + 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <button
                     onClick={() => handleNavClick(link.id)}
-                    className="tracking-tight hover:text-ivory transition-colors duration-500"
+                    className="tracking-tight hover:text-graphite transition-colors duration-500 ink-bleed"
                   >
                     {link.label}
                   </button>
