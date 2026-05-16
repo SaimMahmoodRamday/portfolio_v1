@@ -143,10 +143,11 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.0, ease: EASE }}
           className="font-serif text-lg md:text-xl max-w-2xl leading-[1.7] mb-12 text-ink-2 drop-cap"
         >
-          AI/ML Engineer focused on building production-grade intelligent systems — from
-          raw data ingestion to real-time inference and deployment. I design and implement
-          end-to-end pipelines, scalable backend architectures, and AI-driven applications
-          that turn complex, unstructured problems into reliable, measurable outcomes.
+          The notebook is where intelligence begins. Production is where engineering starts. 
+          I’m an AI/ML Engineer building the systems that bridge that gap — taking models 
+          from raw data ingestion to real-time inference and deployment. I design end-to-end pipelines, 
+          scalable backend architectures, and AI-driven applications that turn complex, 
+          unstructured problems into reliable, measurable, production-grade outcomes.
         </motion.p>
 
         {/* Editorial CTAs */}
