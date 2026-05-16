@@ -144,7 +144,7 @@ const COLUMNS = [
   {
     num: '03',
     title: 'Make it legible.',
-    philosophy: "The toughest challenge isn't solving the problem — it's understanding it from the perspective of the person it serves.",
+    philosophy: "The toughest challenge isn't solving the problem — it's truly understanding it.",
     skills: [
       'React', 'Next.js', 'Streamlit', 'Power BI',
       'Python', 'JavaScript', 'C++', 'SQL',
@@ -157,8 +157,8 @@ function DotList({ skills, delay }) {
     <p
       style={{
         fontFamily: "'Cormorant Garamond', serif",
-        fontSize: '1.15rem',
-        lineHeight: 2.1,
+        fontSize: '1.25rem',
+        lineHeight: 2.2,
         color: '#2a2520',
         letterSpacing: '-0.01em',
         margin: 0,
@@ -186,7 +186,7 @@ function DotList({ skills, delay }) {
           </span>
           {i < skills.length - 1 && (
             <span
-              style={{ color: '#8a8278', margin: '0 7px', fontStyle: 'italic' }}
+              style={{ color: '#8a8278', margin: '0 8px', fontStyle: 'italic' }}
               aria-hidden="true"
             >
               ·
@@ -207,15 +207,15 @@ function Column({ col, index }) {
       whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.95, delay, ease: EASE }}
-      style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
     >
       {/* Number + italic title */}
       <div
         style={{
           display: 'flex',
           alignItems: 'baseline',
-          gap: '0.8rem',
-          paddingBottom: '0.9rem',
+          gap: '0.85rem',
+          paddingBottom: '1rem',
           borderBottom: '1px solid rgba(23,20,17,0.18)',
         }}
       >
@@ -227,6 +227,7 @@ function Column({ col, index }) {
             textTransform: 'uppercase',
             color: '#8a8278',
             flexShrink: 0,
+            paddingBottom: '2px',
           }}
         >
           {col.num}
@@ -236,7 +237,7 @@ function Column({ col, index }) {
             fontFamily: "'Cormorant Garamond', serif",
             fontStyle: 'italic',
             fontWeight: 600,
-            fontSize: '1.55rem',
+            fontSize: '1.75rem',
             color: '#171411',
             lineHeight: 1,
             margin: 0,
@@ -248,7 +249,7 @@ function Column({ col, index }) {
         </h3>
       </div>
 
-      {/* Philosophy — Caveat handwriting */}
+      {/* Philosophy — Caveat, large enough to actually read */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -256,17 +257,30 @@ function Column({ col, index }) {
         transition={{ duration: 0.7, delay: delay + 0.15, ease: EASE }}
         style={{
           fontFamily: "'Caveat', cursive",
-          fontSize: '1rem',
+          fontSize: '1.3rem',
           color: '#5b554d',
-          lineHeight: 1.55,
+          lineHeight: 1.6,
           margin: 0,
         }}
       >
         {col.philosophy}
       </motion.p>
 
+      {/* Hairline separator between philosophy and skills */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: delay + 0.25, ease: EASE }}
+        style={{
+          height: '1px',
+          background: 'rgba(23,20,17,0.10)',
+          transformOrigin: 'left',
+        }}
+      />
+
       {/* Skills — dot-separated Cormorant */}
-      <DotList skills={col.skills} delay={delay + 0.22} />
+      <DotList skills={col.skills} delay={delay + 0.28} />
     </motion.div>
   )
 }
@@ -319,53 +333,14 @@ export default function Skills() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '3.5rem 4rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '3.5rem 5rem',
           }}
         >
           {COLUMNS.map((col, i) => (
             <Column key={col.num} col={col} index={i} />
           ))}
         </div>
-
-        {/* Footer rule */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
-          style={{
-            marginTop: '4rem',
-            paddingTop: '1.25rem',
-            borderTop: '1px solid rgba(23,20,17,0.12)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            flexWrap: 'wrap',
-            gap: '0.5rem',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '10px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: '#8a8278',
-            }}
-          >
-            Full-stack AI engineering · 2024–2026
-          </span>
-          <span
-            style={{
-              fontFamily: "'Caveat', cursive",
-              fontSize: '13px',
-              color: '#8a8278',
-            }}
-          >
-            models are only one part of the equation.
-          </span>
-        </motion.div>
 
       </div>
     </section>
