@@ -33,6 +33,16 @@ const PROJECTS = [
     imageKey: 'project-inspector',
     perfStrip: null
   },
+    {
+    title: 'Pak Econ RAG',
+    github: 'https://github.com/SaimMahmoodRamday/pak-econ-rag',
+    tags: ['Python', 'LangChain', 'RAG', 'Pinecone', 'LLM', 'ONNX', 'FastAPI', 'AWS'],
+    badge: 'RAG · Agentic · Economic Intelligence',
+    description:
+      'Production agentic RAG system with a hand-rolled ReAct loop over LLaMA 3.3 70B. FastAPI backend on AWS EC2, React frontend on AWS S3, automated via GitHub Actions CI/CD. ~1,200 chunks indexed in Pinecone (384-dim cosine) with 4 exposed tools — semantic search, section lookup, table queries, and safe arithmetic. Switched to ONNX Runtime, shrinking the Docker image by ~700 MB.',
+    imageKey: 'pak-econ-rag',
+    perfStrip: null
+  },
   {
     title: 'VisionSlice',
     github: 'https://github.com/SaimMahmoodRamday/vision-slice',
@@ -52,16 +62,6 @@ const PROJECTS = [
       'A fault-tolerant distributed search platform for large-scale medical literature. Implements sharding, replication, and automatic failover via Apache ZooKeeper, enhanced with Gemini LLM-powered abstractive summarization. Handles 1,000 concurrent requests at 13ms average response time.',
     imageKey: 'medical-search',
     perfStrip: '1,000 reqs  ·  13ms avg  ·  90% success rate'
-  },
-  {
-    title: 'Pak Econ RAG',
-    github: 'https://github.com/SaimMahmoodRamday/pak-econ-rag',
-    tags: ['Python', 'LangChain', 'RAG', 'Pinecone', 'LLM', 'ONNX', 'FastAPI', 'AWS'],
-    badge: 'RAG · Agentic · Economic Intelligence',
-    description:
-      'Production agentic RAG system with a hand-rolled ReAct loop over LLaMA 3.3 70B. FastAPI backend on AWS EC2, React frontend on AWS S3, automated via GitHub Actions CI/CD. ~1,200 chunks indexed in Pinecone (384-dim cosine) with 4 exposed tools — semantic search, section lookup, table queries, and safe arithmetic. Switched to ONNX Runtime, shrinking the Docker image by ~700 MB.',
-    imageKey: 'pak-econ-rag',
-    perfStrip: null
   }
 ]
 

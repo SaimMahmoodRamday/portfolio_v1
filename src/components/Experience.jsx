@@ -20,7 +20,7 @@ const EXPERIENCES = [
     company: 'Data BI LLC',
     role: 'Data & AI Associate Engineer',
     period: 'Jun 2025 – Dec 2025',
-    location: '',
+    location: 'Islamabad, Pakistan',
     tags: ['Python', 'PostgreSQL', 'LLMs', 'Power BI', 'Azure ML', 'Docker'],
     bullets: [
       'Prototyped an LLM-powered reporting tool that generates plain-English KPI summaries from Power BI exports — cutting analyst summarization time by ~50% as part of the team\'s broader AI/ML roadmap.',
@@ -33,7 +33,7 @@ const EXPERIENCES = [
     company: 'Glowlogix',
     role: 'Software Engineer — Intern',
     period: 'Jun 2024 – Sep 2024',
-    location: '',
+    location: 'Islamabad, Pakistan',
     tags: ['Laravel', 'React', 'Redis', 'MySQL', 'Laravel Queues'],
     bullets: [
       'Built core modules for a multi-tenant HR SaaS platform — Attendance and Leave Management features supporting complex shift-based rules, approval workflows, and bulk actions across tenant boundaries.',
