@@ -1,4 +1,8 @@
 import { motion } from 'framer-motion'
+import imgProjectInspector from '../assets/project-inspector.png'
+import imgVisionSlice from '../assets/vision-slice.png'
+import imgMedicalSearch from '../assets/medical-search.png'
+import imgPakEconRag from '../assets/pak-econ-rag.png'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -56,7 +60,7 @@ const PROJECTS = [
     badge: 'RAG · Agentic · Economic Intelligence',
     description:
       'Production agentic RAG system with a hand-rolled ReAct loop over LLaMA 3.3 70B. FastAPI backend on AWS EC2, React frontend on AWS S3, automated via GitHub Actions CI/CD. ~1,200 chunks indexed in Pinecone (384-dim cosine) with 4 exposed tools — semantic search, section lookup, table queries, and safe arithmetic. Switched to ONNX Runtime, shrinking the Docker image by ~700 MB.',
-    imageKey: null,
+    imageKey: 'pak-econ-rag',
     perfStrip: null
   }
 ]
@@ -64,7 +68,15 @@ const PROJECTS = [
 const IMAGE_MONO = {
   'project-inspector': 'PI',
   'vision-slice': 'VS',
-  'medical-search': 'DMS'
+  'medical-search': 'DMS',
+  'pak-econ-rag': 'PE'
+}
+
+const IMAGE_MAP = {
+  'project-inspector': imgProjectInspector,
+  'vision-slice': imgVisionSlice,
+  'medical-search': imgMedicalSearch,
+  'pak-econ-rag': imgPakEconRag
 }
 
 function ProjectCard({ project, index }) {
@@ -99,16 +111,16 @@ function ProjectCard({ project, index }) {
       {/* Plate / preview — paper-mounted */}
       <div className="px-7 pt-6">
         <div className="relative aspect-[16/9] overflow-hidden bg-paper-deep border border-rule">
-          {project.imageKey ? (
-            <>
-              <div className="w-full h-full shimmer" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="font-serif italic font-bold text-6xl text-ink/15">{monogram}</div>
-              </div>
-            </>
+          {IMAGE_MAP[project.imageKey] ? (
+            <img
+              src={IMAGE_MAP[project.imageKey]}
+              alt={project.title}
+              className="w-full h-full object-cover"
+              style={{ filter: 'grayscale(0.15) contrast(1.02)' }}
+            />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <div className="font-serif italic font-bold text-6xl text-ink/15">PE</div>
+              <div className="font-serif italic font-bold text-6xl text-ink/15">{monogram}</div>
             </div>
           )}
           {/* corner caption */}
