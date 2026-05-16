@@ -144,10 +144,10 @@ export default function Hero() {
           className="font-serif text-lg md:text-xl max-w-2xl leading-[1.7] mb-12 text-ink-2 drop-cap"
         >
           The notebook is where intelligence begins. Production is where engineering starts. 
-          I’m an AI/ML Engineer building the systems that bridge that gap — taking models 
-          from raw data ingestion to real-time inference and deployment. I design end-to-end pipelines, 
-          scalable backend architectures, and AI-driven applications that turn complex, 
-          unstructured problems into reliable, measurable, production-grade outcomes.
+          I’m an AI/ML Engineer building systems that bridge that gap — from raw data ingestion 
+          to real-time inference and deployment. I design end-to-end pipelines, scalable architectures, 
+          and AI-driven applications that turn complex, unstructured problems into reliable, 
+          measurable production systems.
         </motion.p>
 
         {/* Editorial CTAs */}
