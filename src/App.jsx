@@ -9,6 +9,7 @@ import Volunteering from './components/Volunteering'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import { Analytics } from '@vercel/analytics/react'
 
 function SectionDivider() {
   return (
@@ -50,6 +51,7 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
+        <Analytics />
       </motion.div>
     </AnimatePresence>
   )
