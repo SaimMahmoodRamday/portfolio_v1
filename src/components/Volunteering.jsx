@@ -103,17 +103,10 @@ import { motion } from 'framer-motion'
 
 const EASE = [0.16, 1, 0.3, 1]
 
-const STATS = [
-  { value: 'PKR 250K+', label: 'raised' },
-  { value: '10',        label: 'volunteers led' },
-  { value: '1 year',   label: 'on the ground' },
-]
-
-const PARAGRAPHS = [
-  'That question stuck. So at 20, I said now — and spent a year as a fundraising ambassador, leading a team of ten volunteers across university campuses and on-ground campaigns in Islamabad.',
-  "What surprised me wasn't the logistics — managing kiosks, coordinating volunteers, running awareness drives — but how much leadership is really just listening. Getting ten people to show up, stay motivated, and actually care about the cause takes more than a brief. It takes presence.",
-  'We raised over PKR 250,000 in a year. PKR 200,000 through team effort, PKR 50,000 through individual outreach — including through periods where geo-political constraints made online contributions drop and everything had to move on the ground.',
-  "The real lesson wasn't about fundraising. It was simpler: helping others doesn't always require money. Everyone, in their own way, can make a difference. Sometimes kind words or showing up matters far more.",
+const HIGHLIGHTS = [
+  { num: 'PKR 250K+', label: 'raised across campaigns' },
+  { num: '10',        label: 'volunteers led' },
+  { num: '1 yr',     label: 'on the ground' },
 ]
 
 export default function Volunteering() {
@@ -139,173 +132,171 @@ export default function Volunteering() {
           initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 1.0, delay: 0.08, ease: EASE }}
-          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-14 leading-[1.05] ink-bleed"
+          transition={{ duration: 1.0, delay: 0.1, ease: EASE }}
+          className="text-4xl md:text-6xl lg:text-7xl text-ink mb-6 leading-[1.05] ink-bleed"
         >
           <span className="font-serif italic">Beyond</span>{' '}
           <span className="font-serif font-semibold">the screen.</span>
         </motion.h2>
 
-        {/* Two-column layout */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '4rem 6rem',
-            alignItems: 'start',
-          }}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          className="font-hand text-2xl text-graphite mb-16"
         >
-          {/* LEFT — narrative */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 1.0, delay: 0.15, ease: EASE }}
-          >
-            {/* Role line */}
-            <p
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '10px',
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: '#8a8278',
-                marginBottom: '1rem',
-              }}
-            >
-              Ambassador · Jan 2025 – Jan 2026
-            </p>
+          — engineering is only part of who I am.
+        </motion.p>
 
-            {/* Org name */}
-            <h3
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontStyle: 'italic',
-                fontWeight: 600,
-                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                color: '#171411',
-                lineHeight: 1.25,
-                margin: '0 0 1.75rem',
-                textShadow:
-                  '0 0 0.5px currentColor, 0 0 1.2px rgba(23,20,17,0.12)',
-              }}
-            >
+        {/* Paper card */}
+        <motion.article
+          initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 1.1, delay: 0.2, ease: EASE }}
+          className="paper-card max-w-4xl px-8 md:px-12 py-10 md:py-14"
+          style={{ transform: 'rotate(-0.4deg)' }}
+        >
+          {/* Card header */}
+          <header className="border-b border-rule pb-6 mb-8">
+            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-graphite mb-3">
+              Ambassador · Jan 2025 – Jan 2026 · Islamabad
+            </div>
+            <h3 className="font-serif italic font-bold text-3xl md:text-4xl text-ink leading-tight ink-bleed mb-0">
               Shaukat Khanum Memorial<br />Cancer Hospital &amp; Research Centre
             </h3>
+          </header>
 
-            {/* Pull quote */}
-            <motion.blockquote
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
-              style={{
-                fontFamily: "'Caveat', cursive",
-                fontSize: '1.35rem',
-                color: '#2a2520',
-                borderLeft: '2px solid rgba(23,20,17,0.35)',
-                paddingLeft: '1.1rem',
-                marginBottom: '2rem',
-                lineHeight: 1.65,
-              }}
-            >
-              "When will you start giving back? After spending 20 years benefiting from society, isn't it time?"
-            </motion.blockquote>
+          {/* Pull quote — the question that started it */}
+          <motion.blockquote
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+            style={{
+              fontFamily: "'Caveat', cursive",
+              fontSize: '1.35rem',
+              color: '#2a2520',
+              borderLeft: '2px solid rgba(23,20,17,0.35)',
+              paddingLeft: '1.1rem',
+              marginBottom: '1.75rem',
+              lineHeight: 1.65,
+            }}
+          >
+            "When will you start giving back? After 20 years benefiting from society, isn't it time?"
+          </motion.blockquote>
 
-            {/* Narrative paragraphs */}
-            {PARAGRAPHS.map((para, i) => (
+          {/* Narrative — short, punchy paragraphs. Not bullets. */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '0 3.5rem',
+            }}
+          >
+            {[
+              'That question stuck. So at 20, I said now. I spent a year on the ground as a fundraising ambassador — leading a team of ten, running university campaigns, managing kiosk operations, and keeping volunteers motivated when online contributions dried up due to geo-political constraints.',
+              'What I learned about leadership surprised me: it\'s less about directing and more about presence. Getting people to genuinely care about a cause takes more than a brief. The fundraising was the visible part — the real work was the people.',
+            ].map((para, i) => (
               <motion.p
                 key={i}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: EASE }}
+                transition={{ duration: 0.7, delay: 0.35 + i * 0.12, ease: EASE }}
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   fontSize: '1.2rem',
                   color: '#2a2520',
                   lineHeight: 1.95,
-                  marginBottom: '1.1rem',
+                  margin: '0 0 1rem',
                 }}
               >
                 {para}
               </motion.p>
             ))}
-          </motion.div>
+          </div>
 
-          {/* RIGHT — stats + sign-off */}
+          {/* Stats row — inline, not cards */}
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 1.0, delay: 0.3, ease: EASE }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0',
+              borderTop: '1px solid rgba(23,20,17,0.13)',
+              borderBottom: '1px solid rgba(23,20,17,0.13)',
+              margin: '1.75rem 0',
+            }}
           >
-            {STATS.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.75, delay: 0.35 + i * 0.1, ease: EASE }}
-                className="paper-card"
-                style={{ padding: '1.5rem 1.75rem' }}
+            {HIGHLIGHTS.map((h, i) => (
+              <div
+                key={h.label}
+                style={{
+                  flex: '1 1 120px',
+                  padding: '1.1rem 1.25rem',
+                  borderRight: i < HIGHLIGHTS.length - 1
+                    ? '1px solid rgba(23,20,17,0.13)'
+                    : 'none',
+                }}
               >
                 <div
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     fontStyle: 'italic',
                     fontWeight: 700,
-                    fontSize: 'clamp(2rem, 4.5vw, 2.8rem)',
+                    fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)',
                     color: '#171411',
                     lineHeight: 1,
-                    marginBottom: '0.4rem',
+                    marginBottom: '0.3rem',
                     textShadow:
                       '0 0 0.5px currentColor, 0 0 1.2px rgba(23,20,17,0.12)',
                   }}
                 >
-                  {stat.value}
+                  {h.num}
                 </div>
                 <div
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: '10px',
-                    letterSpacing: '0.22em',
+                    letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     color: '#8a8278',
                   }}
                 >
-                  {stat.label}
+                  {h.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
+          </motion.div>
 
-            {/* Closing thought */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
+          {/* Sign-off */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.65, ease: EASE }}
+            className="flex items-end justify-between flex-wrap gap-4"
+          >
+            <p
               style={{
-                borderTop: '1px solid rgba(23,20,17,0.13)',
-                paddingTop: '1.25rem',
-                marginTop: '0.25rem',
+                fontFamily: "'Caveat', cursive",
+                fontSize: '1.15rem',
+                color: '#5b554d',
+                lineHeight: 1.6,
+                maxWidth: '36rem',
+                margin: 0,
               }}
             >
-              <p
-                style={{
-                  fontFamily: "'Caveat', cursive",
-                  fontSize: '1.2rem',
-                  color: '#5b554d',
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                When your intention is pure, every act resonates — and the inner satisfaction is the true reward.
-              </p>
-            </motion.div>
+              Helping others doesn't always require money. Sometimes kind words or simply showing up matters far more.
+            </p>
+            <span className="font-hand text-2xl text-ink">— in service,</span>
           </motion.div>
-        </div>
+        </motion.article>
 
       </div>
     </section>
