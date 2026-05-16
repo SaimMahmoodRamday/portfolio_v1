@@ -22,22 +22,22 @@ const PROJECTS = [
   {
     title: 'Project Inspector',
     github: 'https://github.com/SaimMahmoodRamday/project-inspector',
-    tags: ['Python', 'FastAPI', 'React', 'LangChain', 'Docker', 'NetworkX', 'Graphviz'],
+    tags: ['Python', 'FastAPI', 'React', 'LangChain', 'Docker', 'NetworkX', 'Graphviz', 'Azure'],
     badge: 'AI-Powered · Full-Stack',
     description:
-      'A Dockerized full-stack system that deconstructs codebases into interpretable structures. Generates dependency and call graphs using NetworkX and Graphviz, while leveraging LLMs via LangChain to produce contextual code summaries — enabling rapid understanding of unfamiliar projects through a clean web UI.',
+      'A Dockerized full-stack codebase analysis system, deployed on Azure Container Apps with GitHub Actions CI/CD. Statically parses Python ASTs to extract function definitions and cross-file call sites — processing 15+ file codebases in under 60 seconds — with a dual-LLM fallback pipeline (Gemini 2.5 Flash → LLaMA 3.1 8B via Groq) and a response cache that cuts redundant API calls by ~60%.',
     imageKey: 'project-inspector',
     perfStrip: null
   },
   {
     title: 'VisionSlice',
     github: 'https://github.com/SaimMahmoodRamday/vision-slice',
-    tags: ['YOLOv8', 'ByteTrack', 'DeepLabV3', 'Streamlit', 'Docker', 'CUDA', 'Python'],
+    tags: ['YOLOv8', 'ByteTrack', 'DeepLabV3', 'Docker', 'CUDA', 'Python'],
     badge: 'Computer Vision · GPU-Deployed',
     description:
-      'A real-time computer vision system designed for operational environments. Combines object detection, multi-object tracking with persistent IDs, semantic segmentation, and zone-based spatial reasoning to monitor safety conditions — deployed with GPU-accelerated Docker inference on Vast.ai for low-latency performance.',
+      'Workplace safety system combining object detection (YOLOv8), multi-object tracking (ByteTrack), and semantic segmentation (DeepLabV3) in a single GPU-accelerated inference pipeline. Zone-based violation alerts, dwell-time and re-entry tracking, and structured CSV event logs for compliance — deployed on a Vast.ai GPU instance via Docker at ~20 FPS.',
     imageKey: 'vision-slice',
-    perfStrip: null
+    perfStrip: '~20 FPS throughput  ·  Vast.ai GPU  ·  dwell-time tracking'
   },
   {
     title: 'Distributed Medical Search Engine',
@@ -47,15 +47,15 @@ const PROJECTS = [
     description:
       'A fault-tolerant distributed search platform for large-scale medical literature. Implements sharding, replication, and automatic failover via Apache ZooKeeper, enhanced with Gemini LLM-powered abstractive summarization. Handles 1,000 concurrent requests at 13ms average response time.',
     imageKey: 'medical-search',
-    perfStrip: '1,000 reqs  ·  13ms avg  ·  95% success rate'
+    perfStrip: '1,000 reqs  ·  13ms avg  ·  90% success rate'
   },
   {
     title: 'Pak Econ RAG',
     github: 'https://github.com/SaimMahmoodRamday/pak-econ-rag',
-    tags: ['Python', 'LangChain', 'RAG', 'Vector DB', 'LLM'],
-    badge: 'RAG · Economic Intelligence',
+    tags: ['Python', 'LangChain', 'RAG', 'Pinecone', 'LLM', 'ONNX', 'FastAPI', 'AWS'],
+    badge: 'RAG · Agentic · Economic Intelligence',
     description:
-      'A retrieval-augmented generation system that grounds LLM responses in verified economic data. Bridges the gap between raw financial documents and interpretable insights through structured retrieval pipelines and generation — enabling accurate, explainable answers to complex economic questions.',
+      'Production agentic RAG system with a hand-rolled ReAct loop over LLaMA 3.3 70B. FastAPI backend on AWS EC2, React frontend on AWS S3, automated via GitHub Actions CI/CD. ~1,200 chunks indexed in Pinecone (384-dim cosine) with 4 exposed tools — semantic search, section lookup, table queries, and safe arithmetic. Switched to ONNX Runtime, shrinking the Docker image by ~700 MB.',
     imageKey: null,
     perfStrip: null
   }

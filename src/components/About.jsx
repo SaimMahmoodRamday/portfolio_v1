@@ -5,11 +5,12 @@ import useCounter from '../hooks/useCounter'
 const EASE = [0.16, 1, 0.3, 1]
 
 const PARAGRAPHS = [
-  "I'm a Computer Scientist working at the intersection of artificial intelligence, distributed systems, and full-stack engineering, focused on building end-to-end systems where models are trained, deployed, scaled, and integrated into real-world workflows.",
-  "I design architectures that connect data pipelines, backend services, and user-facing interfaces into cohesive, production-ready platforms, including GPU-accelerated ML pipelines, streaming systems, and containerized deployments optimized for performance, reliability, and maintainability.",
-  "My focus lies in applied AI, including intelligent video analytics, large-scale search systems, predictive data pipelines, and NLP-driven applications, with experience in real-time multi-modal systems involving detection models, streaming architectures, and interactive dashboards under production constraints.",
-  "I am particularly interested in machine learning systems operating under real-world limitations such as latency, scale, noisy data, and continuous adaptation, including evaluation and fine-tuning of detection and density-based models for complex visual environments.",
-  "Beyond the technical layer, I aim to build systems that are usable, efficient, and impactful — combining AI and software engineering to improve decision-making, enhance accessibility, and solve real-world problems through practical, scalable technology solutions."
+  "I'm a Computer Scientist working at the intersection of artificial intelligence, distributed systems, and full-stack engineering — focused on building end-to-end systems where models are trained, optimized, deployed, and integrated into real-world production workflows.",
+  "My work spans agentic LLM applications, computer vision pipelines, and ML infrastructure, with experience designing architectures that connect data pipelines, backend services, and user-facing interfaces into scalable, production-ready platforms.",
+  "I build GPU-accelerated inference pipelines, event-driven streaming systems, containerized deployments, and distributed backend architectures optimized for performance, reliability, maintainability, and operation under real-world production constraints.",
+  "What drives me is not simply making AI work in a notebook, but making it measurable, scalable, and dependable in production — focusing on latency, noisy data, inference efficiency, system resilience, continuous adaptation, and the engineering infrastructure surrounding modern AI systems.",
+  "I've worked across intelligent video analytics, distributed search systems, RAG architectures, predictive data pipelines, and real-time multi-modal AI applications, particularly in environments involving dense scenes, ambiguous inputs, and constrained inference budgets.",
+  "Beyond the technical layer, I aim to build systems that are usable, efficient, and impactful — combining AI and software engineering to improve decision-making and solve real-world problems through practical, scalable technology solutions."
 ];
 
 const STATS = [

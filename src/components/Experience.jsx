@@ -2,19 +2,18 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
 const EASE = [0.16, 1, 0.3, 1]
-
 const EXPERIENCES = [
   {
     company: 'Neuronix Technologies',
     role: 'AI Engineer — Intern',
-    period: 'Mar 2025 – Present',
+    period: 'Mar 2026 – Apr 2026',
     location: 'Islamabad, Pakistan',
-    tags: ['Python', 'Go/Gin', 'Kafka', 'YOLO', 'RF-DETR', 'WebRTC', 'WebSockets', 'Docker', 'PostgreSQL'],
+    tags: ['Python', 'Kafka', 'YOLO', 'RF-DETR', 'WebRTC', 'WebSockets', 'Docker', 'PostgreSQL', 'Next.js', 'Modal Labs'],
     bullets: [
-      'Engineered a production-grade UAV-based C4I surveillance platform for real-time multi-modal video intelligence, integrating weapon, fire/smoke, and crowd detection pipelines.',
-      'Architected a distributed microservices system (Go + Python) with Kafka, WebRTC/MJPEG, and WebSockets, and built a real-time operator dashboard using React for live video, detection overlays, and monitoring.',
-      'Evaluated crowd-counting architectures (CSRNet, MCNN, CAN) for density estimation, and selected fine-tuned, optimized detection-based models (YOLO, RF-DETR) that achieved superior real-time performance (~75%+ precision/accuracy) across aerial scenarios ranging from sparse to highly dense crowds (1000+ individuals).',
-      'Deployed the full system using Docker Compose with scalable inference pipelines and PostgreSQL-backed persistence, supporting real-time processing and system reliability.'
+      'Contributed to a UAV surveillance platform running 3 parallel AI inference services off a single RTSP feed — YOLOv8 for crowd and fire detection, RF-DETR with a DINOv2 backbone for weapon detection — connected via Unix Domain Socket fan-out.',
+      'Built the Kafka event pipeline (3 topics, one consumer per service) linking frame ingestion to PostgreSQL persistence and a live WebSocket dashboard — achieving sub-100ms end-to-end detection latency with zero message loss under sustained load.',
+      'Fine-tuned YOLOv8m on a filtered VisDrone dataset (150 epochs on an H100 via Modal Labs) and a YOLOv8s fire/smoke model; exported both to ONNX, reducing model load time by ~40%.',
+      'Containerized the full 10-service system with Docker Compose (CPU and CUDA profiles) and built a Next.js C2 dashboard with live WebRTC video, real-time alert feeds, and JWT-secured REST APIs.'
     ]
   },
   {
@@ -22,13 +21,12 @@ const EXPERIENCES = [
     role: 'Data & AI Associate Engineer',
     period: 'Jun 2025 – Dec 2025',
     location: '',
-    tags: ['Python', 'PostgreSQL', 'Power BI', 'Azure ML', 'Docker'],
+    tags: ['Python', 'PostgreSQL', 'LLMs', 'Power BI', 'Azure ML', 'Docker'],
     bullets: [
-      'Architected an automated Attendance Intelligence System processing 1,000+ events per refresh with zero manual intervention.',
-      'Designed an end-to-end data pipeline enabling daily KPI refresh, eliminating manual reporting overhead.',
-      'Engineered ML-ready feature pipelines to support downstream predictive and forecasting models.',
-      'Initiated an AI/ML roadmap leveraging Azure ML and Docker for forecasting and predictive analytics.',
-      'Reduced manual reporting effort by 30–40% through cross-team automation and system integration.'
+      'Prototyped an LLM-powered reporting tool that generates plain-English KPI summaries from Power BI exports — cutting analyst summarization time by ~50% as part of the team\'s broader AI/ML roadmap.',
+      'Built an Attendance Intelligence System processing 1,000+ events per refresh; anomaly detection flagged irregular patterns and shift manipulation at ~80% precision on held-out validation data.',
+      'Set up an Azure ML + Docker pipeline for automated model retraining and experiment tracking, reducing manual reporting effort by 35%.',
+      'Designed time-series feature stores in PostgreSQL — lag features and rolling aggregates — feeding downstream forecasting models surfaced through Power BI dashboards.'
     ]
   },
   {
@@ -38,14 +36,13 @@ const EXPERIENCES = [
     location: '',
     tags: ['Laravel', 'React', 'Redis', 'MySQL', 'Laravel Queues'],
     bullets: [
-      'Built and optimized core modules for a multi-tenant HR SaaS platform using Laravel and React.',
-      'Developed Attendance and Leave Management features supporting complex shift-based rules and bulk actions.',
-      'Engineered an Excel bulk data ingestion pipeline using Laravel Queues and Redis, significantly improving reliability and throughput.',
-      'Refactored backend architecture and normalized database schemas, improving system consistency and long-term maintainability.'
+      'Built core modules for a multi-tenant HR SaaS platform — Attendance and Leave Management features supporting complex shift-based rules, approval workflows, and bulk actions across tenant boundaries.',
+      'Engineered an Excel bulk data ingestion pipeline using Laravel Queues and Redis, replacing a synchronous bottleneck with an async queue-backed flow that improved throughput and prevented request timeouts under large imports.',
+      'Refactored backend architecture and normalized database schemas to eliminate redundancy across tenant data, improving query consistency and long-term maintainability.',
+      'Contributed to frontend UX in React, shipping responsive views for HR workflows that reduced manual data-entry steps for end users.'
     ]
   }
 ]
-
 function TimelineEntry({ entry, index }) {
   return (
     <motion.div

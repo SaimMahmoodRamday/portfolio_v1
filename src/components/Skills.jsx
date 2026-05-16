@@ -9,20 +9,20 @@ const SKILL_GROUPS = [
   },
   {
     label: 'Frameworks & Libraries',
-    skills: ['FastAPI', 'React', 'Next.js', 'Laravel', 'LangChain', 'PyTorch', 'TensorFlow', 'Keras', 'Java Swing', 'Unity', 'MERN']
+    skills: ['FastAPI', 'React', 'Next.js', 'Laravel', 'LangChain', 'PyTorch', 'TensorFlow', 'Keras']
   },
   {
     label: 'AI/ML & Computer Vision',
     featured: true,
-    skills: ['Machine Learning', 'Deep Learning', 'Computer Vision', 'YOLO', 'RF-DETR', 'DeepSORT', 'ByteTrack', 'CNNs', 'Time-Series Analysis', 'LLMs', 'RAG', 'Feature Engineering']
+    skills: ['Machine Learning', 'Deep Learning', 'Computer Vision', 'YOLO', 'RF-DETR', 'ByteTrack', 'CNNs', 'Time-Series Analysis', 'LLMs', 'RAG', 'ONNX', 'Pinecone', 'FAISS', 'Feature Engineering']
   },
   {
     label: 'Systems & DevOps',
-    skills: ['Docker', 'Docker Compose', 'Git', 'Redis', 'Kafka', 'WebRTC', 'WebSockets', 'Azure ML', 'Apache Solr', 'ZooKeeper']
+    skills: ['Docker', 'Docker Compose', 'Git', 'Redis', 'Kafka', 'WebRTC', 'WebSockets', 'Apache Solr', 'ZooKeeper', 'AWS', 'Azure ML']
   },
   {
     label: 'Databases & Analytics',
-    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Power BI', 'Apache Solr']
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Power BI']
   }
 ]
 
