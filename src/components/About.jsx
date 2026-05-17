@@ -95,7 +95,7 @@ export default function About() {
             <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-graphite mb-3">
               Origin
             </div>
-            <p className="text-ink-2 text-sm leading-relaxed">
+            <p className="font-serif italic text-ink text-base leading-relaxed">
               Pakistan
             </p>
           </aside>
@@ -115,8 +115,8 @@ export default function About() {
               </motion.p>
             ))}
 
-            {/* Education — printed footnote */}
-            <motion.div
+{/* Education — printed footnote (commented out) */}
+            {/* <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -137,7 +137,7 @@ export default function About() {
                   2022 – 2026 · Islamabad, Pakistan
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
 
