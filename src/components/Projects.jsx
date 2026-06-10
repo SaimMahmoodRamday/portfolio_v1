@@ -30,9 +30,9 @@ const PROJECTS = [
     tags: ['FastAPI', 'LangGraph', 'Qwen2.5-3B', 'QLoRA', 'Faster-Whisper', 'Next.js', 'Ollama', 'Docker'],
     badge: 'AI Agents · Fine-Tuning · Full-Stack',
     description:
-      'End-to-end agentic system that converts informal Roman Urdu voice notes into structured tasks using a fine-tuned Qwen2.5-3B model and a LangGraph layer that detects only true ambiguity and resolves it with a single targeted follow-up; includes Whisper-based transcription, deterministic JSON extraction, and optional Notion execution, achieving >70% exact-match accuracy on a held-out set (vs <50% zero-shot baseline) in a fully local, Dockerized pipeline.',
+      'End-to-end agentic system that converts informal Roman Urdu voice notes into structured tasks using a fine-tuned Qwen2.5-3B model and a LangGraph layer that detects only true ambiguity and resolves it with a single targeted follow-up; includes Whisper-based transcription, deterministic JSON extraction, and optional Notion execution, in a fully local, Dockerized pipeline.',
     imageKey: 'voice-2-action',
-    perfStrip: '>70% exact-match accuracy  ·  vs <50% zero-shot baseline  ·  Agentic Reasoning'
+    perfStrip: '>70% exact-match  ·  vs <50% zero-shot  ·  Agentic Reasoning'
   },
   {
     title: 'Project Inspector',
