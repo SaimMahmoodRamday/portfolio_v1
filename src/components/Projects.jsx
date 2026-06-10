@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import imgVoice2Action from '../assets/voice-2-action.png'
 import imgProjectInspector from '../assets/project-inspector.png'
 import imgVisionSlice from '../assets/vision-slice.png'
 import imgMedicalSearch from '../assets/medical-search.png'
@@ -23,6 +24,16 @@ function ArrowIcon(props) {
 }
 
 const PROJECTS = [
+  {
+    title: 'Voice2Action',
+    github: 'https://github.com/SaimMahmoodRamday/voice2action',
+    tags: ['FastAPI', 'LangGraph', 'Qwen2.5-3B', 'QLoRA', 'Faster-Whisper', 'Next.js', 'Ollama', 'Docker'],
+    badge: 'AI Agents · Fine-Tuning · Full-Stack',
+    description:
+      'End-to-end agentic system that converts informal Roman Urdu voice notes into structured tasks using a fine-tuned Qwen2.5-3B model and a LangGraph layer that detects only true ambiguity and resolves it with a single targeted follow-up; includes Whisper-based transcription, deterministic JSON extraction, and optional Notion execution, achieving >70% exact-match accuracy on a held-out set (vs <50% zero-shot baseline) in a fully local, Dockerized pipeline.',
+    imageKey: 'voice-2-action',
+    perfStrip: '>70% exact-match accuracy  ·  vs <50% zero-shot baseline  ·  Agentic Reasoning'
+  },
   {
     title: 'Project Inspector',
     github: 'https://github.com/SaimMahmoodRamday/project-inspector',
@@ -66,6 +77,7 @@ const PROJECTS = [
 ]
 
 const IMAGE_MONO = {
+  'voice-2-action': 'V2A',
   'project-inspector': 'PI',
   'vision-slice': 'VS',
   'medical-search': 'DMS',
@@ -73,6 +85,7 @@ const IMAGE_MONO = {
 }
 
 const IMAGE_MAP = {
+  'voice-2-action': imgVoice2Action,
   'project-inspector': imgProjectInspector,
   'vision-slice': imgVisionSlice,
   'medical-search': imgMedicalSearch,
