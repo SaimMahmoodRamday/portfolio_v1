@@ -26,7 +26,7 @@ function ArrowIcon(props) {
 const PROJECTS = [
   {
     title: 'Voice2Action',
-    github: 'https://github.com/SaimMahmoodRamday/voice2action',
+    github: 'https://github.com/SaimMahmoodRamday/voice-2-action.git',
     tags: ['FastAPI', 'LangGraph', 'Qwen2.5-3B', 'QLoRA', 'Faster-Whisper', 'Next.js', 'Ollama', 'Docker'],
     badge: 'AI Agents · Fine-Tuning · Full-Stack',
     description:
