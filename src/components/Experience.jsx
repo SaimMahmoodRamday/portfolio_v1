@@ -23,7 +23,7 @@ const EXPERIENCES = [
     location: 'Islamabad, Pakistan',
     tags: ['Python', 'PostgreSQL', 'LLMs', 'Power BI', 'Azure ML', 'Docker'],
     bullets: [
-      'Architected a production multi-agent LLM system — three specialized agents with schema-validated outputs (Pydantic), retry/fallback chains across Groq, Claude, and Gemini, Redis caching for idempotency, and OpenTelemetry tracing end-to-end.',
+      'Architected a production multi-agent LLM system — three specialized agents with schema-validated outputs (Pydantic), retry/fallback chains across Groq, and Gemini, Redis caching for idempotency, and OpenTelemetry tracing end-to-end.',
   'Built the reliability and delivery layer for the same system: a 50-issue nightly eval suite (precision/recall/top-K), prompt versioning, a human-in-the-loop approval gate, and full CI/CD via Docker and GitHub Actions.',
       'Prototyped an LLM-powered reporting tool that generates plain-English KPI summaries from Power BI exports — cutting analyst summarization time by ~50% as part of the team\'s broader AI/ML roadmap.',
       'Built an Attendance Intelligence System processing 1,000+ events per refresh; anomaly detection flagged irregular patterns and shift manipulation at ~80% precision on held-out validation data.',
