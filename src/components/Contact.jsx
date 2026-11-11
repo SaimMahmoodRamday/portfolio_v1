@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1]
 const CONTACT_INFO = [
   { label: 'Email', value: 'saimmehmood2004@gmail.com', href: 'mailto:saimmehmood2004@gmail.com' },
   { label: 'Location', value: 'Islamabad, Pakistan · Globally Available', href: null },
-  { label: 'LinkedIn', value: 'linkedin.com/in/saim-mahmood-1385a5250', href: 'https://www.linkedin.com/in/saim-mahmood-1385a5250' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/saim-mahmood', href: 'https://www.linkedin.com/in/saim-mahmood/' },
   { label: 'GitHub', value: 'github.com/SaimMahmoodRamday', href: 'https://github.com/SaimMahmoodRamday' }
 ]
 

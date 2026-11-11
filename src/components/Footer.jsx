@@ -29,7 +29,7 @@ function MailIcon(props) {
 
 const SOCIAL_LINKS = [
   { href: 'https://github.com/SaimMahmoodRamday', label: 'GitHub', Icon: GitHubIcon },
-  { href: 'https://www.linkedin.com/in/saim-mahmood-1385a5250', label: 'LinkedIn', Icon: LinkedInIcon },
+  { href: 'https://www.linkedin.com/in/saim-mahmood/', label: 'LinkedIn', Icon: LinkedInIcon },
   { href: 'mailto:saimmehmood2004@gmail.com', label: 'Email', Icon: MailIcon }
 ]
 
