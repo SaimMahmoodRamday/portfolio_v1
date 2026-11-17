@@ -14,7 +14,7 @@ const PARAGRAPHS = [
 ];
 
 const STATS = [
-  { value: 3, suffix: '+', label: 'Internships & Work Experiences' },
+  { value: 4, suffix: '+', label: 'Internships & Work Experiences' },
   { value: 4, suffix: '+', label: 'Projects Shipped' },
   { value: 10, suffix: '+', label: 'Technologies & Frameworks' },
   { value: 250, suffix: 'K+', label: 'PKR Raised (Volunteering)' }

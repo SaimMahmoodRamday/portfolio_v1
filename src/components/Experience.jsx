@@ -4,6 +4,15 @@ import { useRef } from 'react'
 const EASE = [0.16, 1, 0.3, 1]
 const EXPERIENCES = [
   {
+    company: 'Stealth AI Startup',
+    role: 'Machine Learning Engineer',
+    period: 'Jul 2026 – Present',
+    location: 'Ontario, Canada · Remote',
+    tags: [],
+    bullets: [],
+    note: 'In stealth — details withheld from this edition. The type is set; the page is not yet pressed.'
+  },
+  {
     company: 'Neuronix Technologies',
     role: 'AI Engineer — Intern',
     period: 'Mar 2026 – Apr 2026',
@@ -87,25 +96,42 @@ function TimelineEntry({ entry, index }) {
         </header>
 
         {/* Tags — typeset */}
-        <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-graphite">
-          {entry.tags.map((tag, i) => (
-            <span key={tag} className="inline-flex items-center">
-              {i > 0 && <span className="mr-3 text-pencil">·</span>}
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <ul className="space-y-3">
-          {entry.bullets.map((bullet, i) => (
-            <li key={i} className="flex items-start gap-3 font-serif text-ink-2 text-base md:text-lg leading-[1.8]">
-              <span className="font-serif italic text-graphite text-base flex-shrink-0 mt-0.5" aria-hidden="true">
-                §
+        {entry.tags.length > 0 && (
+          <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-graphite">
+            {entry.tags.map((tag, i) => (
+              <span key={tag} className="inline-flex items-center">
+                {i > 0 && <span className="mr-3 text-pencil">·</span>}
+                {tag}
               </span>
-              <span>{bullet}</span>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        )}
+
+        {/* Embargo stamp — stands in for the tag row on withheld entries */}
+        {entry.note && entry.tags.length === 0 && (
+          <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-graphite">
+            Under embargo
+          </div>
+        )}
+
+        {entry.bullets.length > 0 && (
+          <ul className="space-y-3">
+            {entry.bullets.map((bullet, i) => (
+              <li key={i} className="flex items-start gap-3 font-serif text-ink-2 text-base md:text-lg leading-[1.8]">
+                <span className="font-serif italic text-graphite text-base flex-shrink-0 mt-0.5" aria-hidden="true">
+                  §
+                </span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {entry.note && (
+          <p className="font-serif italic text-ink-2 text-base md:text-lg leading-[1.8] border-l border-rule pl-4">
+            {entry.note}
+          </p>
+        )}
       </article>
     </motion.div>
   )
