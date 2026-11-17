@@ -7,7 +7,7 @@ const EXPERIENCES = [
     company: 'Stealth AI Startup',
     role: 'Machine Learning Engineer',
     period: 'Jul 2026 – Present',
-    location: 'Ontario, Canada · Remote',
+    location: 'Ontario, Canada',
     tags: [],
     bullets: [],
     note: 'In stealth — details withheld from this edition. The type is set; the page is not yet pressed.'
@@ -128,8 +128,11 @@ function TimelineEntry({ entry, index }) {
         )}
 
         {entry.note && (
-          <p className="font-serif italic text-ink-2 text-base md:text-lg leading-[1.8] border-l border-rule pl-4">
-            {entry.note}
+          <p className="flex items-start gap-3 font-serif italic text-ink-2 text-base md:text-lg leading-[1.8]">
+            <span className="font-serif italic text-graphite text-base flex-shrink-0 mt-0.5" aria-hidden="true">
+              §
+            </span>
+            <span>{entry.note}</span>
           </p>
         )}
       </article>
